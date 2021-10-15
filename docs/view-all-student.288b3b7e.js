@@ -140,12 +140,12 @@
       this[globalName] = mainExports;
     }
   }
-})({"gmQzi":[function(require,module,exports) {
+})({"7Jgo7":[function(require,module,exports) {
 var HMR_HOST = null;
 var HMR_PORT = null;
 var HMR_SECURE = false;
 var HMR_ENV_HASH = "4a236f9275d0a351";
-module.bundle.HMR_BUNDLE_ID = "abb010cbd47aa52c";
+module.bundle.HMR_BUNDLE_ID = "ec78739c288b3b7e";
 "use strict";
 function _createForOfIteratorHelper(o, allowArrayLike) {
     var it;
@@ -458,16 +458,20 @@ function hmrAcceptRun(bundle, id) {
     acceptedAssets[id] = true;
 }
 
-},{}],"2L9i6":[function(require,module,exports) {
+},{}],"5fOqa":[function(require,module,exports) {
+var _authGuard = require("./auth-guard");
+
+},{"./auth-guard":"faJqh"}],"faJqh":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 var _jquery = require("jquery");
 var _jqueryDefault = parcelHelpers.interopDefault(_jquery);
-/* Event listeners */ _jqueryDefault.default("#btn-login").on('click', (eventData)=>{
-    eventData.preventDefault();
-    console.log("WOrking");
-});
+function canActivate() {
+    if (!localStorage.getItem('token')) window.location.replace('http://localhost:1234/sign-in.html');
+    else _jqueryDefault.default(".overlay").remove();
+}
+canActivate();
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","jquery":"bE6My"}],"bE6My":[function(require,module,exports) {
+},{"jquery":"bE6My","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}],"bE6My":[function(require,module,exports) {
 /*!
  * jQuery JavaScript Library v3.6.0
  * https://jquery.com/
@@ -7279,6 +7283,6 @@ var _jqueryDefault = parcelHelpers.interopDefault(_jquery);
     return jQuery;
 });
 
-},{}]},["gmQzi","2L9i6"], "2L9i6", "parcelRequire46e8")
+},{}]},["7Jgo7","5fOqa"], "5fOqa", "parcelRequire46e8")
 
-//# sourceMappingURL=sign-in.d47aa52c.js.map
+//# sourceMappingURL=view-all-student.288b3b7e.js.map
