@@ -462,6 +462,8 @@ function hmrAcceptRun(bundle, id) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 var _jquery = require("jquery");
 var _jqueryDefault = parcelHelpers.interopDefault(_jquery);
+const BASE_API = 'http://localhost:8080/sms';
+const USER_SERVICE_API = BASE_API + '/users';
 /* Event listeners */ _jqueryDefault.default("#btn-signup").on('click', (eventData)=>{
     eventData.preventDefault();
     const fullName = _jqueryDefault.default("#txt-full-name").val();
@@ -489,8 +491,28 @@ var _jqueryDefault = parcelHelpers.interopDefault(_jquery);
         _jqueryDefault.default("#txt-password").trigger('select');
         return;
     }
-    console.log("Okay");
+    createNewAccount({
+        username: username,
+        password: password,
+        fullName: fullName
+    });
 });
+/* API Calls */ function createNewAccount(user) {
+    fetch(USER_SERVICE_API, {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(user)
+    }).then((response)=>{
+        if (response.status !== 201) throw new Error("Network failure, try again");
+        alert("Your account has been created successfully");
+        window.location.replace('http://localhost:1234/sign-in.html');
+    }).catch((err)=>{
+        alert(err.message);
+        console.log(err);
+    });
+}
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","jquery":"bE6My"}],"bE6My":[function(require,module,exports) {
 /*!

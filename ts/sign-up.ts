@@ -1,5 +1,8 @@
 import $ from 'jquery';
 
+const BASE_API = 'http://localhost:8080/sms';
+const USER_SERVICE_API = BASE_API + '/users';
+
 /* Event listeners */
 
 $("#btn-signup").on('click', (eventData)=> {
@@ -32,5 +35,28 @@ $("#btn-signup").on('click', (eventData)=> {
         return;
     }
 
-    console.log("Okay");
+    createNewAccount({username: username, password: password, fullName: fullName});
 });
+
+/* API Calls */
+
+function createNewAccount(user: {username: string, password: string, fullName: string}){
+
+    fetch(USER_SERVICE_API, {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(user)
+    }).then((response)=> {
+
+            if (response.status !== 201) throw new Error("Network failure, try again");
+
+            alert("Your account has been created successfully");
+            window.location.replace('http://localhost:1234/sign-in.html');
+    }).catch((err)=> {
+        alert(err.message);
+        console.log(err);
+    })
+
+}
