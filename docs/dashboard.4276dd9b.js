@@ -466,6 +466,8 @@ var _jquery = require("jquery");
 var _jqueryDefault = parcelHelpers.interopDefault(_jquery);
 _jqueryDefault.default("#btn-logout").on('click', ()=>_app.signOut()
 );
+_jqueryDefault.default("#username").text(_app.getUsername());
+_jqueryDefault.default("#full-name").text(_app.getFullName());
 
 },{"./auth-guard":"faJqh","jquery":"bE6My","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","./app":"ljSkC"}],"faJqh":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
@@ -7301,12 +7303,12 @@ parcelHelpers.export(exports, "signOut", ()=>signOut
 function getUsername() {
     const token = localStorage.getItem('token');
     if (!token) throw new Error('Failed to fetch the username');
-    return token.username;
+    return JSON.parse(token).username;
 }
 function getFullName() {
     const token = localStorage.getItem('token');
     if (!token) throw new Error('Failed to fetch the full name');
-    return token.fullName;
+    return JSON.parse(token).fullName;
 }
 function signOut() {
     localStorage.removeItem('token');

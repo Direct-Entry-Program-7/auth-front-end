@@ -459,9 +459,16 @@ function hmrAcceptRun(bundle, id) {
 }
 
 },{}],"5fOqa":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 var _authGuard = require("./auth-guard");
+var _app = require("./app");
+var _jquery = require("jquery");
+var _jqueryDefault = parcelHelpers.interopDefault(_jquery);
+_jqueryDefault.default("#btn-logout").on('click', ()=>_app.signOut()
+);
+_jqueryDefault.default("#username").text(_app.getUsername());
 
-},{"./auth-guard":"faJqh"}],"faJqh":[function(require,module,exports) {
+},{"./auth-guard":"faJqh","./app":"ljSkC","jquery":"bE6My","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}],"faJqh":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 var _jquery = require("jquery");
 var _jqueryDefault = parcelHelpers.interopDefault(_jquery);
@@ -7283,6 +7290,30 @@ canActivate();
     return jQuery;
 });
 
-},{}]},["7Jgo7","5fOqa"], "5fOqa", "parcelRequire46e8")
+},{}],"ljSkC":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "getUsername", ()=>getUsername
+);
+parcelHelpers.export(exports, "getFullName", ()=>getFullName
+);
+parcelHelpers.export(exports, "signOut", ()=>signOut
+);
+function getUsername() {
+    const token = localStorage.getItem('token');
+    if (!token) throw new Error('Failed to fetch the username');
+    return JSON.parse(token).username;
+}
+function getFullName() {
+    const token = localStorage.getItem('token');
+    if (!token) throw new Error('Failed to fetch the full name');
+    return JSON.parse(token).fullName;
+}
+function signOut() {
+    localStorage.removeItem('token');
+    window.location.replace('http://localhost:1234/sign-in.html');
+}
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}]},["7Jgo7","5fOqa"], "5fOqa", "parcelRequire46e8")
 
 //# sourceMappingURL=view-all-student.288b3b7e.js.map
