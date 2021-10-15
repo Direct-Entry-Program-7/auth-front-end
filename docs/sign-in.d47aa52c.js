@@ -462,9 +462,37 @@ function hmrAcceptRun(bundle, id) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 var _jquery = require("jquery");
 var _jqueryDefault = parcelHelpers.interopDefault(_jquery);
+const BASE_API = 'http://localhost:8080/sms';
+const AUTH_SERVICE_API = BASE_API + '/authenticate';
 /* Event listeners */ _jqueryDefault.default("#btn-login").on('click', (eventData)=>{
     eventData.preventDefault();
-    console.log("WOrking");
+    const username = _jqueryDefault.default("#txt-username").val();
+    const password = _jqueryDefault.default("#txt-password").val();
+    fetch(AUTH_SERVICE_API, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: new URLSearchParams({
+            username: username,
+            password: password
+        }).toString()
+    }).then((response)=>{
+        /*  1. 200 : User
+            2. 401 : Invalid login credentails
+            3. 500 or something else: Internal Server Error */ if (response.status === 401) {
+            alert("Invalid login credentails");
+            _jqueryDefault.default("#txt-username").trigger('select');
+        } else if (response.status !== 200) throw new Error("Failed to connect to the server");
+        else {
+            response.json().then((user)=>console.log(user)
+            );
+            alert("Okay");
+        }
+    }).catch((err)=>{
+        alert(err.message);
+        console.log(err);
+    });
 });
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","jquery":"bE6My"}],"bE6My":[function(require,module,exports) {
