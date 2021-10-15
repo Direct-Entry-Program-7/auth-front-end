@@ -1,1 +1,7 @@
-console.log("Sign Up")
+import $ from 'jquery';
+
+/* Event listeners */
+
+$("#btn-signup").on('click', (eventData)=> {
+    eventData.preventDefault();
+});
