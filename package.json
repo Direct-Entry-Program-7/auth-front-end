@@ -5,12 +5,17 @@
   "main": "index.js",
   "scripts": {
     "watch": "tsc --watch",
-    "start": "rm -rf ./dist && tsc && node ./dist/main.js"
+    "clean": "rm -rf ./docs",
+    "start": "parcel serve dashboard.html --dist-dir docs",
+    "build": "npm run clean && pracel dashboard.html --dist-dir docs"
   },
   "keywords": [],
   "author": "Rushain Sovis",
   "license": "MIT",
   "dependencies": {
     "bootstrap": "^5.1.3"
+  },
+  "devDependencies": {
+    "parcel": "^2.0.0"
   }
 }
