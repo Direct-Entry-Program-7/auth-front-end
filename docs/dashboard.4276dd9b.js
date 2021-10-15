@@ -459,9 +459,15 @@ function hmrAcceptRun(bundle, id) {
 }
 
 },{}],"fsxsm":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 var _authGuard = require("./auth-guard");
+var _app = require("./app");
+var _jquery = require("jquery");
+var _jqueryDefault = parcelHelpers.interopDefault(_jquery);
+_jqueryDefault.default("#btn-logout").on('click', ()=>_app.signOut()
+);
 
-},{"./auth-guard":"faJqh"}],"faJqh":[function(require,module,exports) {
+},{"./auth-guard":"faJqh","jquery":"bE6My","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","./app":"ljSkC"}],"faJqh":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 var _jquery = require("jquery");
 var _jqueryDefault = parcelHelpers.interopDefault(_jquery);
@@ -7283,6 +7289,30 @@ canActivate();
     return jQuery;
 });
 
-},{}]},["ar6k2","fsxsm"], "fsxsm", "parcelRequire46e8")
+},{}],"ljSkC":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "getUsername", ()=>getUsername
+);
+parcelHelpers.export(exports, "getFullName", ()=>getFullName
+);
+parcelHelpers.export(exports, "signOut", ()=>signOut
+);
+function getUsername() {
+    const token = localStorage.getItem('token');
+    if (!token) throw new Error('Failed to fetch the username');
+    return token.username;
+}
+function getFullName() {
+    const token = localStorage.getItem('token');
+    if (!token) throw new Error('Failed to fetch the full name');
+    return token.fullName;
+}
+function signOut() {
+    localStorage.removeItem('token');
+    window.location.replace('http://localhost:1234/sign-in.html');
+}
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}]},["ar6k2","fsxsm"], "fsxsm", "parcelRequire46e8")
 
 //# sourceMappingURL=dashboard.4276dd9b.js.map
