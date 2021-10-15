@@ -29,8 +29,10 @@ $("#btn-login").on('click', (eventData)=> {
             }else if (response.status !== 200){
                 throw new Error("Failed to connect to the server");
             }else{
-                response.json().then((user)=> console.log(user));
-                alert("Okay");
+                response.json().then((user)=> {
+                    localStorage.setItem('token', JSON.stringify(user));
+                    window.location.replace('http://localhost:1234/dashboard.html');
+                });
             }
 
     }).catch((err)=> {

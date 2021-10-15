@@ -484,11 +484,10 @@ const AUTH_SERVICE_API = BASE_API + '/authenticate';
             alert("Invalid login credentails");
             _jqueryDefault.default("#txt-username").trigger('select');
         } else if (response.status !== 200) throw new Error("Failed to connect to the server");
-        else {
-            response.json().then((user)=>console.log(user)
-            );
-            alert("Okay");
-        }
+        else response.json().then((user)=>{
+            localStorage.setItem('token', JSON.stringify(user));
+            window.location.replace('http://localhost:1234/dashboard.html');
+        });
     }).catch((err)=>{
         alert(err.message);
         console.log(err);
