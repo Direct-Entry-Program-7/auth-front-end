@@ -459,7 +459,6 @@ function hmrAcceptRun(bundle, id) {
 }
 
 },{}],"dubB1":[function(require,module,exports) {
-console.log("Add Student");
 
 },{}]},["hrxMw","dubB1"], "dubB1", "parcelRequire46e8")
 

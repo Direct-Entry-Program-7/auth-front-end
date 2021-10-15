@@ -1,1 +1,1 @@
-{"mappings":"","sources":["css/styles.css"],"sourcesContent":[null],"names":[],"version":3,"file":"dashboard.2634dfcb.css.map","sourceRoot":"/__parcel_source_root/"}
+{"mappings":"AAAA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA","sources":["css/styles.css"],"sourcesContent":[".overlay{\n    position: fixed;\n    left: 0;\n    top: 0;\n    bottom: 0;\n    right: 0;\n    background-color: white;\n    z-index: 999999;\n}"],"names":[],"version":3,"file":"dashboard.2634dfcb.css.map","sourceRoot":"/__parcel_source_root/"}

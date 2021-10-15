@@ -459,7 +459,6 @@ function hmrAcceptRun(bundle, id) {
 }
 
 },{}],"fsxsm":[function(require,module,exports) {
-console.log("Dashboard");
 
 },{}]},["ar6k2","fsxsm"], "fsxsm", "parcelRequire46e8")
 
