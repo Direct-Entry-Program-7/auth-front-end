@@ -464,6 +464,32 @@ var _jquery = require("jquery");
 var _jqueryDefault = parcelHelpers.interopDefault(_jquery);
 /* Event listeners */ _jqueryDefault.default("#btn-signup").on('click', (eventData)=>{
     eventData.preventDefault();
+    const fullName = _jqueryDefault.default("#txt-full-name").val();
+    const username = _jqueryDefault.default("#txt-username").val();
+    const password = _jqueryDefault.default("#txt-password").val();
+    const confirmPassword = _jqueryDefault.default("#txt-confirm-password").val();
+    if (!/^[A-Za-z ]+$/.test(fullName)) {
+        alert("Invalid full name");
+        _jqueryDefault.default("#txt-full-name").trigger('select');
+        return;
+    } else if (username.trim().length < 3) {
+        alert("Invalid username");
+        _jqueryDefault.default("#txt-username").trigger('select');
+        return;
+    } else if (password.trim().length === 0) {
+        alert("Invalid password");
+        _jqueryDefault.default("#txt-password").trigger('select');
+        return;
+    } else if (confirmPassword.trim().length === 0) {
+        alert("Invalid Password");
+        _jqueryDefault.default("#txt-confirm-password").trigger('select');
+        return;
+    } else if (password !== confirmPassword) {
+        alert("Password mismatch");
+        _jqueryDefault.default("#txt-password").trigger('select');
+        return;
+    }
+    console.log("Okay");
 });
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","jquery":"bE6My"}],"bE6My":[function(require,module,exports) {
