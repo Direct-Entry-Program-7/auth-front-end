@@ -459,6 +459,7 @@ function hmrAcceptRun(bundle, id) {
 }
 
 },{}],"2L9i6":[function(require,module,exports) {
+localStorage.setItem('token', 'jfdlkasjf');
 
 },{}]},["gmQzi","2L9i6"], "2L9i6", "parcelRequire46e8")
 
